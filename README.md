@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name:JOHN PALL M </h3>
+<h3>Register Number: 212224040140</h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -69,6 +69,8 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 </ol>
 
 <hr>
+
+
 <h3>Sample Input</h3>
 <hr>
 7 9 <BR>
@@ -103,7 +105,53 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
-<h3>Result:</h3>
+
+<h2>Program</h2>
+
+```
+from collections import deque, defaultdict
+
+def bfs(graph, start):
+    visited = defaultdict(bool)
+    path = []
+    queue = deque([start])
+    
+    visited[start] = True
+    path.append(start)
+
+    while queue:
+        node = queue.popleft()
+
+        for neighbour in graph[node]:
+            if not visited[neighbour]:
+                visited[neighbour] = True
+                queue.append(neighbour)
+                path.append(neighbour)
+
+    return path
+
+graph = defaultdict(list)
+
+
+num_vertices, num_edges = map(int, input().split())
+
+for _ in range(num_edges):
+    u, v_node = input().split()
+    graph[u].append(v_node)
+    graph[v_node].append(u)
+
+
+start = input().strip()
+
+traversedpath = bfs(graph, start)
+print(traversedpath)
+```
+<h2>OUTPUT</h2>
+<img width="698" height="272" alt="image" src="https://github.com/user-attachments/assets/61bde380-794c-41f6-a682-5c8109357b3e" />
+<img width="510" height="208" alt="image" src="https://github.com/user-attachments/assets/0207f206-2c1c-4bc7-9b47-c24dd4728b55" />
+
+
+<h2>Result:</h2>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
 
